@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="יהונתן חוגג בר מצווה - אישור הגעה">
+<meta property="og:description" content="יום חמישי 29.10.2026, 18:00, חצר העמק, קיבוץ שער העמקים">
+<meta property="og:image" content="https://lihijabes-hash.github.io/yehonatan13/bg.jpg">
+<meta property="og:type" content="website">
+<title>יהונתן חוגג בר מצווה - אישור הגעה</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1c2847;
+    --navy-soft: #4a5573;
+    --cream: #f5f1ea;
+    --line: #c9cfdc;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: 'Heebo', Arial, sans-serif;
+    color: var(--navy);
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 40px;
+  }
+  .card { width: 100%; max-width: 440px; text-align: center; }
+  .hero {
+    position: relative;
+    margin: 0 -16px;
+    height: min(62vh, 520px);
+    background: #e9d6c3 url('bg.jpg') center 42% / cover no-repeat;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(245,241,234,0) 55%, var(--cream) 100%);
+  }
+  .hero .invite {
+    position: absolute; top: 18px; left: 0; right: 0; z-index: 1;
+    color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.35);
+  }
+  .hero .thirteen { position: absolute; left: 18px; bottom: 18px; margin: 0; z-index: 1; }
+  .invite { font-size: 16px; font-weight: 500; margin: 0; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 12px 0; }
+  .divider::before, .divider::after { content: ""; width: 56px; height: 1px; background: var(--navy-soft); opacity: .5; }
+  .divider span { width: 7px; height: 7px; background: var(--navy); transform: rotate(45deg); }
+  h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    margin: 6px 0 4px;
+    letter-spacing: 1px;
+  }
+  .sub { font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 500; margin: 0; }
+  .thirteen {
+    width: 96px; height: 96px; margin: 18px auto 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 55%, rgba(255,255,255,0) 72%);
+    font-family: 'Frank Ruhl Libre', serif; font-size: 52px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .details {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: rgba(255,255,255,.6);
+    border-radius: 14px;
+    padding: 14px 6px;
+    margin: 14px 0 22px;
+  }
+  .details div { padding: 0 6px; }
+  .details div + div { border-right: 1px solid var(--line); }
+  .details b { display: block; font-size: 15px; }
+  .details small { font-size: 13px; color: var(--navy-soft); }
+  .details .time { font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; }
+
+  form, .done {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px 20px;
+    box-shadow: 0 6px 24px rgba(28,40,71,.08);
+  }
+  form h2, .done h2 { font-family: 'Frank Ruhl Libre', serif; font-size: 24px; margin: 0 0 16px; }
+  label { display: block; text-align: right; font-weight: 500; font-size: 15px; margin-bottom: 6px; }
+  input[type=text] {
+    width: 100%; font: inherit; font-size: 17px;
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+    color: var(--navy); background: #fbfbfd;
+  }
+  input[type=text]:focus { outline: 2px solid var(--navy); outline-offset: 1px; }
+  .stepper { display: flex; align-items: center; justify-content: center; gap: 22px; margin: 6px 0 22px; }
+  .stepper button {
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 1px solid var(--navy); background: #fff; color: var(--navy);
+    font-size: 26px; line-height: 1; cursor: pointer;
+  }
+  .stepper output { font-family: 'Frank Ruhl Libre', serif; font-size: 40px; font-weight: 700; min-width: 48px; }
+  .field { margin-bottom: 18px; }
+  .submit {
+    width: 100%; font: inherit; font-size: 18px; font-weight: 700;
+    padding: 14px; border: 0; border-radius: 12px;
+    background: var(--navy); color: #fff; cursor: pointer;
+  }
+  .submit:disabled { opacity: .6; cursor: default; }
+  .err { color: #a3261b; font-size: 14px; min-height: 20px; margin-top: 10px; }
+  .done p { margin: 0 0 8px; font-size: 17px; }
+  .done .count { font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700; }
+  .link-btn { background: none; border: 0; color: var(--navy-soft); text-decoration: underline; font: inherit; font-size: 14px; cursor: pointer; margin-top: 10px; }
+  .footer { margin-top: 22px; font-size: 16px; color: var(--navy-soft); }
+  .heart { color: var(--navy); font-size: 18px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main class="card">
+  <header class="hero">
+    <p class="invite">הנכם מוזמנים לחגוג איתנו</p>
+    <div class="thirteen">13</div>
+  </header>
+  <h1>יהונתן</h1>
+  <p class="sub">חוגג בר מצווה</p>
+  <div class="divider"><span></span></div>
+
+  <section class="details">
+    <div><b>יום חמישי</b><small>29.10.2026</small></div>
+    <div><span class="time">18:00</span></div>
+    <div><b>חצר העמק</b><small>קיבוץ שער העמקים</small></div>
+  </section>
+
+  <form id="rsvp" novalidate>
+    <h2>אישור הגעה</h2>
+    <div class="field">
+      <label for="name">שם / משפחה</label>
+      <input id="name" type="text" autocomplete="name" placeholder="למשל: משפחת כהן" maxlength="80">
+    </div>
+    <label style="text-align:center">כמה מגיעים?</label>
+    <div class="stepper">
+      <button type="button" id="plus" aria-label="הוספה">+</button>
+      <output id="count">2</output>
+      <button type="button" id="minus" aria-label="הפחתה">−</button>
+    </div>
+    <button class="submit" id="send" type="submit">מאשרים הגעה</button>
+    <div class="err" id="err"></div>
+  </form>
+
+  <section class="done" id="done" hidden>
+    <h2>תודה רבה!</h2>
+    <p id="doneName"></p>
+    <p class="count" id="doneCount"></p>
+    <p>נתראה ב-29.10</p>
+    <button class="link-btn" id="edit" type="button">לעדכון מספר המגיעים</button>
+  </section>
+
+  <p class="footer">נשמח לראותכם בשמחתנו<br><span class="heart">&#9829;</span></p>
+</main>
+
+<script>
+  var API = 'https://script.google.com/macros/s/AKfycbzI1hvHEl6DoFlrYe1N8_b4zBqhWheYRRoLQtrEWW_cB6TaWH0FW3DxiwtxXAmOOiI4Bw/exec';
+  var count = 2;
+  var MIN = 1, MAX = 30;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function guestId() {
+    var id = store('rsvp_id');
+    if (!id) { id = Math.random().toString(36).slice(2) + Date.now().toString(36); store('rsvp_id', id); }
+    return id;
+  }
+  function setCount(n) { count = Math.max(MIN, Math.min(MAX, n)); $('count').textContent = count; }
+  function showDone(name, n) {
+    $('doneName').textContent = name;
+    $('doneCount').textContent = n === 1 ? 'אישרת הגעה של אורח אחד' : 'אישרתם הגעה של ' + n + ' אורחים';
+    $('rsvp').hidden = true;
+    $('done').hidden = false;
+  }
+
+  $('plus').onclick = function () { setCount(count + 1); };
+  $('minus').onclick = function () { setCount(count - 1); };
+  $('edit').onclick = function () { $('done').hidden = true; $('rsvp').hidden = false; };
+
+  var saved = store('rsvp_done');
+  if (saved) {
+    try { saved = JSON.parse(saved); $('name').value = saved.name; setCount(saved.count); showDone(saved.name, saved.count); } catch (e) {}
+  }
+
+  $('rsvp').onsubmit = function (e) {
+    e.preventDefault();
+    var name = $('name').value.trim();
+    $('err').textContent = '';
+    if (!name) { $('err').textContent = 'נא למלא שם'; $('name').focus(); return; }
+    $('send').disabled = true;
+    $('send').textContent = 'שולח...';
+    var ok = function () {
+      store('rsvp_done', JSON.stringify({ name: name, count: count }));
+      $('send').disabled = false;
+      $('send').textContent = 'מאשרים הגעה';
+      showDone(name, count);
+    };
+    var fail = function () {
+      $('send').disabled = false;
+      $('send').textContent = 'מאשרים הגעה';
+      $('err').textContent = 'משהו השתבש, נסו שוב בעוד רגע';
+    };
+    // שליחה לגיליון בלי חשבון גוגל (credentials: omit), כדי שגם חשבונות ילדים יעברו
+    fetch(API, {
+      method: 'POST',
+      credentials: 'omit',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name: name, count: count, guestId: guestId() })
+    }).then(function (r) { return r.json(); })
+      .then(function (d) { if (d && !d.error) ok(); else fail(); })
+      .catch(fail);
+  };
+</script>
+</body>
+</html>
